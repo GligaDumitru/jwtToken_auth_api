@@ -24,5 +24,10 @@ server.use(bodyParser.json());
 
 // Routes
 server.use("/api/v1/users", userRouter);
+server.get("/", (req, res) => {
+  res.status(200).json({
+    msg: "Welcome"
+  });
+});
 
 server.listen(PORT, _ => console.log(`Server is running on port: ${PORT}`));
