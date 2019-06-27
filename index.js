@@ -7,7 +7,7 @@ const db = require("./database/connection");
 const userRouter = require("./routes/user");
 
 mongoose
-  .connect(db.connection, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI || db.connection, { useNewUrlParser: true })
   .then(
     _ => console.log("Connection established"),
     err => console.log("err", err)
