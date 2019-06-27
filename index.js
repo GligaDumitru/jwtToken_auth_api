@@ -5,6 +5,8 @@ const passport = require("passport");
 const PORT = process.env.PORT || 5000;
 const db = require("./database/connection");
 const userRouter = require("./routes/user");
+const cors = require("cors");
+
 
 mongoose
   .connect(process.env.MONGODB_URI || db.connection, { useNewUrlParser: true })
@@ -14,7 +16,7 @@ mongoose
   );
 
 const server = express();
-
+server.use(cors());
 server.use(passport.initialize());
 require("./passport")(passport);
 
